@@ -138,8 +138,8 @@
     <h2 style="margin-left: 0.3em;" id="title">XP Calculator</h2>
     <div id="output"></div>
     <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'sum-xp')">Sum Xp</button>
-        <button class="tablinks" onclick="openTab(event, 'calc-xp')">Calc Xp</button>
+        <button class="tablinks" onclick="MERCH.openTab(event, 'sum-xp')">Sum Xp</button>
+        <button class="tablinks" onclick="MERCH.openTab(event, 'calc-xp')">Calc Xp</button>
     </div>
 
     <div id="sum-xp" class="tabcontent">
@@ -148,20 +148,6 @@
 
     <div id="calc-xp" class="tabcontent">
         <h3>Calc Xp</h3>
-    </div>
-
-    <div id="output-minimal" class="hidden-table"></div>
-
-    <div id="settingscontainer" class="settings-hidden">
-        <div id="showsettingsbutton">Handle settings/notifications</div>
-        <div id="settings">
-            <p><input type="checkbox" id="lightweight" name="lightweightMode"> Lightweight table</p>
-            <div id="notificationsOutput">
-                <table id="notificationstable"></table>
-            </div>
-            <div id="resetnotifications" class="nisbutton nobrowser" onclick="MERCH.makeNewContract();" title="Click here to completely redetect the contract, if you moved the interface around.">Reset notifications</div>
-            <div id="promolinks"><a js_href="https://github.com/Starur/Alt1TravellingMerchant" target="_blank">GitHub</a></div>
-        </div>
     </div>
 </body>
 
