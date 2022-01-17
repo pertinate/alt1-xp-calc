@@ -102,10 +102,10 @@ if (window.alt1) {
 }
 
 function processCalcuation(action: Action) {
-    const itemsForAction = action.materials.map(material => playerItems.find(playerItem => playerItem === material));
+    const itemsForAction = action.materials.map(material => playerItems.find(playerItem => playerItem.name === material.name));
 
     const actionsAvailablePerItem = itemsForAction.map((item) => {
-        const material = action.materials.find(material => material === item);
+        const material = action.materials.find(material => material.name === item.name);
 
         return item.amount / material.amount;
     }).sort();
