@@ -35,33 +35,45 @@ const Skills = [
     "Archaeology"
 ]
 
-interface Action {
+interface Item {
     name: string;
-    xp: number;
     img: string;
+}
+
+const items = {
+    'Uncut Sapphire': {
+        name: 'Uncut Sapphire',
+        img: require('./imgs/gems/Uncut_sapphire.png')
+    },
+    'Sapphire': {
+        name: 'Sapphire',
+        img: require('./imgs/gems/Sapphire.png'),
+    }
+}
+
+interface Action extends Item {
+    xp: number;
     materials: Material[];
 }
 
-interface Material {
-    name: string;
-    img: string;
+interface Material extends Item {
     amount: number;
 }
 
 const actions: Action[] = [
     {
-        name: 'Sapphire',
+        ...items['Sapphire'],
         xp: 20,
-        img: require('./imgs/gems/Sapphire.png'),
         materials: [
             {
-                name: 'Uncut Sapphire',
-                img: require('./imgs/gems/Uncut_sapphire.png'),
+                ...items['Uncut Sapphire'],
                 amount: 1
             }
         ]
     }
 ]
+
+const playerItems: Material[] = Object.keys(items).map(entry => ({ ...items[entry as keyof typeof items], amount: 0 }));
 
 export function start() {
     // var _hidden = window.localStorage.getItem('xp_calc_settings');
@@ -77,14 +89,31 @@ export function start() {
 
     const sapphires = 5673;
 
+    const index = playerItems.findIndex(entry => entry.name === 'Uncut Sapphire');
+    playerItems[index].amount = 5673
+
     const action = actions[0];
 
-    const actionAmt = sapphires / action.materials[0].amount;
-    console.log('XP:', actionAmt * action.xp);
+    console.log('XP:', processCalcuation(action));
 }
 
 if (window.alt1) {
 	alt1.identifyAppUrl("./appconfig.json");
+}
+
+function processCalcuation(action: Action) {
+    const itemsForAction = action.materials.map(material => playerItems.find(playerItem => playerItem === material));
+
+    const actionsAvailablePerItem = itemsForAction.map((item) => {
+        const material = action.materials.find(material => material === item);
+
+        return item.amount / material.amount;
+    }).sort();
+
+    return {
+        availableToCraft: actionsAvailablePerItem[0],
+        craftCounts: actionsAvailablePerItem
+    }
 }
 
 export function openTab(event: any, tabName: string) {

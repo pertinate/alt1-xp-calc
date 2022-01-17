@@ -10,6 +10,7 @@ var outdir = path.resolve(__dirname, "./dist/");
 //more finetuning can be done at config.chain
 //the wrapper gives decent webpack defaults for everything alt1/typescript/react related
 var config = new alt1chain(srcdir, { ugly: false });
+config.chain.devtool('source-map');
 
 //exposes all root level exports as UMD (as named package "testpackege" or "TEST" in global scope)
 config.makeUmd("xpcalcpackage", "XPCALC");
