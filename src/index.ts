@@ -1,9 +1,6 @@
 import * as $ from "jquery"; 
 import * as a1lib from "@alt1/base";
 
-//Credits to https://runescape.wiki/w/Module:Rotations/Merchant
-//and to Elessar2 (https://runescape.wiki/w/User_talk:Elessar2)
-
 require("!file-loader?name=[name].[ext]!./index.html");
 require("!file-loader?name=[name].[ext]!./appconfig.json");
 
@@ -38,6 +35,34 @@ const Skills = [
     "Archaeology"
 ]
 
+interface Action {
+    name: string;
+    xp: number;
+    img: string;
+    materials: Material[];
+}
+
+interface Material {
+    name: string;
+    img: string;
+    amount: number;
+}
+
+const actions: Action[] = [
+    {
+        name: 'Sapphire',
+        xp: 20,
+        img: require('./imgs/gems/Sapphire.png'),
+        materials: [
+            {
+                name: 'Uncut Sapphire',
+                img: require('./imgs/gems/Uncut_sapphire.png'),
+                amount: 1
+            }
+        ]
+    }
+]
+
 export function start() {
     // var _hidden = window.localStorage.getItem('xp_calc_settings');
     
@@ -50,6 +75,12 @@ export function start() {
         skillSelect.appendChild(opt);
     });
 
+    const sapphires = 5673;
+
+    const action = actions[0];
+
+    const actionAmt = sapphires / action.materials[0].amount;
+    console.log('XP:', actionAmt * action.xp);
 }
 
 if (window.alt1) {
