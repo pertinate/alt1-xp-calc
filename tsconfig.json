@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"moduleResolution": "Node",
 		"resolveJsonModule": true,
-		"baseUrl": ""
+		"baseUrl": "./src"
 	},
 	"allowTsInNodeModules": true
 }
