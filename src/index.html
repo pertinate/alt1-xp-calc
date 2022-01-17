@@ -100,8 +100,21 @@
 </head>
 
 <body class="nis" onload="MERCH.start()">
-    <h2 style="margin-left: 0.3em;" id="title">Travelling Merchant's Shop - Current stock</h2>
+    <h2 style="margin-left: 0.3em;" id="title">XP Calculator</h2>
     <div id="output"></div>
+    <div class="tab">
+        <button class="tablinks" onclick="openTab(event, 'sum-xp')">Sum Xp</button>
+        <button class="tablinks" onclick="openTab(event, 'calc-xp')">Calc Xp</button>
+    </div>
+
+    <div id="sum-xp" class="tabcontent">
+        <h3>sum-xp</h3>
+    </div>
+
+    <div id="calc-xp" class="tabcontent">
+        <h3>Calc Xp</h3>
+    </div>
+
     <div id="output-minimal" class="hidden-table"></div>
 
     <div id="settingscontainer" class="settings-hidden">
