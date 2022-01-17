@@ -88,7 +88,7 @@ export function start() {
     });
 
     const sapphires = 5673;
-
+    console.log(playerItems);
     const index = playerItems.findIndex(entry => entry.name === 'Uncut Sapphire');
     playerItems[index].amount = 5673
 
