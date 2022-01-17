@@ -7,49 +7,43 @@ import * as a1lib from "@alt1/base";
 require("!file-loader?name=[name].[ext]!./index.html");
 require("!file-loader?name=[name].[ext]!./appconfig.json");
 
-enum Skills {
-    Attack = 0,
-    Defence,
-    Strength,
-    Constitution,
-    Ranged,
-    Prayer,
-    Magic,
-    Cooking,
-    Woodcutting,
-    Fletching,
-    Fishing,
-    Firemaking,
-    Crafting,
-    Smithing,
-    Mining,
-    Herblore,
-    Agility,
-    Thieving,
-    Slayer,
-    Farming,
-    Runecrafting,
-    Hunter,
-    Construction,
-    Summoning,
-    Dungeoneering,
-    Divination,
-    Invention,
-    Archaeology
-}
+const Skills = [
+    "Attack",
+    "Defence",
+    "Strength",
+    "Constitution",
+    "Ranged",
+    "Prayer",
+    "Magic",
+    "Cooking",
+    "Woodcutting",
+    "Fletching",
+    "Fishing",
+    "Firemaking",
+    "Crafting",
+    "Smithing",
+    "Mining",
+    "Herblore",
+    "Agility",
+    "Thieving",
+    "Slayer",
+    "Farming",
+    "Runecrafting",
+    "Hunter",
+    "Construction",
+    "Summoning",
+    "Dungeoneering",
+    "Divination",
+    "Invention",
+    "Archaeology"
+]
 
 export function start() {
-    var _hidden = window.localStorage.getItem('xp_calc_settings');
+    // var _hidden = window.localStorage.getItem('xp_calc_settings');
     
     let skillSelect = document.getElementById('skills');
-    var enumNames = [];
-    for (var skill in Skills) {
-        if (isNaN(Number(skill))) {
-            enumNames.push(skill);
-        }
-    }
 
-    enumNames.forEach(skill => {
+    Skills.forEach(skill => {
         const opt = document.createElement('option');
         opt.value = skill;
         opt.innerHTML = skill;
